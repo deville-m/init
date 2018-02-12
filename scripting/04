@@ -1,0 +1,14 @@
+#! /bin/bash
+
+c1=""
+
+while [[ true ]]
+do
+	c2=$(md5sum /etc/crontab)
+	if [[ $c1 -ne $c2 ]]
+	then
+		echo "/etc/crontab changed" | mail -s "/etc/crontab changed" root@localhost
+		c1=$c2
+	fi
+	sleep 5
+done
