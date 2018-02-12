@@ -1,13 +1,17 @@
 #! /bin/bash
+# Then crontab -e
+# Then add this line :
+# 0 0 * * * ~/pathtoscript.sh
+
 
 c1=""
 
-while [[ true ]]
+while true
 do
 	c2=$(md5sum /etc/crontab)
-	if [[ $c1 -ne $c2 ]]
+	if [[ $c1 != $c2 ]]
 	then
-		echo "/etc/crontab changed" | mail -s "/etc/crontab changed" root@localhost
+		echo "/etc/crontab changed" | mail -s "/etc/crontab changed" root
 		c1=$c2
 	fi
 	sleep 5
