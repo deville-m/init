@@ -1,1 +1,1 @@
-ifconfig | grep ": flags=" | cut -d: -f1
+ifconfig -l
