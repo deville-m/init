@@ -3,13 +3,11 @@
 # Then add this line :
 # 0 0 * * * path/to/script.sh
 
-md5sum /etc/crontab > /tmp/crontab.md5
 if [ ! -f $HOME/crontab.md5  ]
 then
-	cp /tmp/crontab.md5 $HOME/crontab.md5
-elif diff -q $HOME/crontab.md5 /tmp/crontab.md5
+	md5sum /etc/crontab > $HOME/crontab.md5
+elif ! md5sum -c $HOME/crontab.md5
 then
 	echo "/etc/crontab changed" | mail -s "/etc/crontab changed" root
-	cp /tmp/crontab.md5 $HOME/crontab.md5
+	md5sum /etc/crontab > $HOME/crontab.md5
 fi
-rm /tmp/crontab.md5
