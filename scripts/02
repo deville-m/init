@@ -1,0 +1,5 @@
+#! /bin/bash
+# To make it weekly, do crontab -e and add this line:
+# 0 4 * * 1 /path/to/script.sh
+
+apt update -y && apt upgrade -y > /var/log/update_script.log

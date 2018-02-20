@@ -1,1 +1,1 @@
-traceroute slash16.org
+traceroute -I -w3 slash16.org

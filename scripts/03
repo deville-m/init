@@ -1,3 +1,3 @@
 #! /bin/bash
 
-ls -lS $1
+ls -lS "$1"
